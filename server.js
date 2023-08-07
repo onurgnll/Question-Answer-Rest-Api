@@ -1,14 +1,16 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const allrouters = require("./routers/allrouters");
+
 
 dotenv.config({ path: './config/env/config.env' });
 
 
 app.listen(process.env.PORT, ()=> {
-    console.log('Server started successfully on port : ' + process.dotenv.PORT);
+    console.log('Server started successfully on port : ' + process.env.PORT);
 })
 
-app.get("/api" , (req,res,next) =>{
-    res.send("selam");
-})
+app.use("/api" , allrouters);
+
+
