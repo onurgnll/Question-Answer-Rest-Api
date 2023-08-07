@@ -9,4 +9,6 @@ app.listen(process.env.PORT, ()=> {
     console.log('Server started successfully on port : ' + process.dotenv.PORT);
 })
 
-
+app.get("/api" , (req,res,next) =>{
+    res.send("selam");
+})
