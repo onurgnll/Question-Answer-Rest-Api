@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
-router.get("/register" , (req,res,next) => {
-    res.send("register sayfasındasın");
+const {register} = require("../controllers/auth");
 
 
-})
+router.get("/register" , register)
 
 module.exports = router;

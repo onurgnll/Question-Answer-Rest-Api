@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const {getAllQuestions} = require("../controllers/questions");
 
 
-router.get("/", (req,res,next) => {
-    res.send("questions sayfasindasin")
-})
+router.get("/", getAllQuestions);
 
 
 
