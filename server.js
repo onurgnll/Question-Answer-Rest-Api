@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const allrouters = require("./routers/allrouters");
 const mongoose = require('mongoose');
+const errorhandle = require("./middlewares/errors/errorHandling");
 
 dotenv.config({ path: './config/env/config.env' });
 
@@ -15,11 +16,12 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 })
 
 
+app.use("/api" , allrouters);
 
+app.use(errorhandle);
 app.listen(process.env.PORT, ()=> {
     console.log('Server started successfully on port : ' + process.env.PORT);
 })
 
-app.use("/api" , allrouters);
 
 
