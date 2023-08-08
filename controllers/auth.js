@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const sendJWTToClient = require("../helpers/auth/sendjwttocookie");
 
 const register = async (req,res,next) => {
 
@@ -11,11 +12,7 @@ const register = async (req,res,next) => {
             username
         });
 
-
-        res.status(200)
-            .json({
-                success: true
-            })
+        sendJWTToClient(user,res);
     
     } catch (error) {
         return next(error);
