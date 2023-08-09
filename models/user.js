@@ -59,17 +59,16 @@ const User = new Schema({
 });
 
 
-User.methods.generateJWT = () => {
+User.methods.generateJWT = function() {
     const {JWT_SECRET_KEY , JWT_EXPIRE_TIME} = process.env;
     const payload = {
         id : this._id,
-        username: this.username
+        name: this.name
     };
-
+    console.log(this._id +  "    "+this.name);
     const token = jwt.sign(payload,JWT_SECRET_KEY,{
         expiresIn : JWT_EXPIRE_TIME
     })
-
     return token;
 
 

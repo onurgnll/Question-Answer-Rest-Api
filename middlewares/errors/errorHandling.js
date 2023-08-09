@@ -24,7 +24,6 @@ const errorHandle = (err, req , res, next) => {
         customError = new CustomError("Duplicate Key Found : Please check your info",400); 
     }
     
-    console.log(customError);
     
 
     return res.status(customError.status || 500).json({
